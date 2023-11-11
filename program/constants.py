@@ -5,7 +5,7 @@ from decouple import config
 MODE = "DEVELOPMENT"
 
 # Close all open positions and orders
-ABORT_ALL_POSITIONS = True
+ABORT_ALL_POSITIONS = False
 
 # Find Cointegrated Pairs
 FIND_COINTEGRATED = True
@@ -24,9 +24,13 @@ WINDOW = 21
 
 # Thresholds - Opening
 MAX_HALF_LIFE = 24
-ZCORE_THRESH = 1.5
-USD_PER_TRADE = 15
-USD_MIN_COLLATERAL = 50
+ZSCORE_THRESH = 1.5
+USD_PER_TRADE = 25
+USD_MIN_COLLATERAL = 500
+STOP_LOSS_PERCENTAGE = 50
+
+# Added from to make proper order size for certain assets
+TOKEN_FACTOR_10 = ["XLM-USD","DOGE-USD","TRX-USD"]
 
 # Thresholds - Closing
 CLOSE_AT_ZSCORE_CROSS = True

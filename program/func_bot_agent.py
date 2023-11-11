@@ -80,11 +80,12 @@ class BotAgent:
     if order_status == "CANCELED":
       print(f"{self.market_1} vs {self.market_2} - Order cancelled...")
       self.order_dict["pair_status"] = "FAILED"
+      pprint(f"self_order_dict_pairstatus in cancellation: {self.order_dict}")
       return "failed"
 
     # Guard: If order not filled wait until order expiration
     if order_status != "FAILED":
-      time.sleep(15)
+      time.sleep(5)
       order_status = check_order_status(self.client, order_id)
 
       # Guard: If order cancelled move onto next Pair
@@ -105,6 +106,9 @@ class BotAgent:
 
   # Open trades
   def open_trades(self):
+  
+    # Initiate pair_status to avoid trying to access a NoneType value when placing second order
+    self.order_dict["pair_status"] = ""
 
     # Print status
     print("---")
@@ -126,6 +130,7 @@ class BotAgent:
       # Store the order id
       self.order_dict["order_id_m1"] = base_order["order"]["id"]
       self.order_dict["order_time_m1"] = datetime.now().isoformat()
+      pprint(f"self_order_dict_pairstatus in placing first order: {self.order_dict}")
     except Exception as e:
       self.order_dict["pair_status"] = "ERROR"
       self.order_dict["comments"] = f"Market 1 {self.market_1}: , {e}"
@@ -160,9 +165,11 @@ class BotAgent:
       # Store the order id
       self.order_dict["order_id_m2"] = quote_order["order"]["id"]
       self.order_dict["order_time_m2"] = datetime.now().isoformat()
+      pprint(f"self_order_dict_pairstatus in placing second order: {self.order_dict}")
     except Exception as e:
       self.order_dict["pair_status"] = "ERROR"
       self.order_dict["comments"] = f"Market 2 {self.market_2}: , {e}"
+      pprint(self.order_dict["comments"])
       return self.order_dict
 
     # Ensure order is live before processing
@@ -171,7 +178,7 @@ class BotAgent:
     # Guard: Aborder if order failed
     if order_status_m2 != "live":
       self.order_dict["pair_status"] = "ERROR"
-      self.order_dict["comments"] = f"{self.market_1} failed to fill"
+      self.order_dict["comments"] = f"{self.market_2} failed to fill"
 
       # Close order 1:
       try:

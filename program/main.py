@@ -7,6 +7,9 @@ from func_entry_pairs import open_positions
 from func_exit_pairs import manage_trade_exits
 from func_messaging import send_message
 
+# Missing:
+# RestartAfterError, FindCointegrated every now and then, History of trading:(win, loss, winrate, etc.) -> how to manage performance?
+# HOX: Alchemy depricates Goerli 1.1. -> Research & test https://www.ankr.com/rpc/eth/eth_goerli/
 
 # MAIN FUNCTION
 if __name__ == "__main__":

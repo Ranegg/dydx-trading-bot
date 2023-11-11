@@ -70,6 +70,9 @@ class BotAgent:
   # Check order status by id
   def check_order_status_by_id(self, order_id):
 
+    # Initiate pair_status to avoid trying to access a NoneType value when placing second order
+    self.order_dict["pair_status"] = ""
+
     # Allow time to process
     time.sleep(2)
 

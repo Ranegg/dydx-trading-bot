@@ -83,7 +83,7 @@ class BotAgent:
     if order_status == "CANCELED":
       print(f"{self.market_1} vs {self.market_2} - Order cancelled...")
       self.order_dict["pair_status"] = "FAILED"
-      pprint(f"self_order_dict_pairstatus in cancellation: {self.order_dict}")
+      # Debgging tool: pprint(f"self_order_dict_pairstatus in cancellation: {self.order_dict}")
       return "failed"
 
     # Guard: If order not filled wait until order expiration
@@ -219,6 +219,7 @@ class BotAgent:
 
         # ABORT
         exit(1)
+      return self.order_dict
 
     # Return success result
     else:

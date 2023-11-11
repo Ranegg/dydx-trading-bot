@@ -130,7 +130,7 @@ class BotAgent:
       # Store the order id
       self.order_dict["order_id_m1"] = base_order["order"]["id"]
       self.order_dict["order_time_m1"] = datetime.now().isoformat()
-      pprint(f"self_order_dict_pairstatus in placing first order: {self.order_dict}")
+      # Debgging tool: pprint(f"self_order_dict_pairstatus in placing first order: {self.order_dict}")
     except Exception as e:
       self.order_dict["pair_status"] = "ERROR"
       self.order_dict["comments"] = f"Market 1 {self.market_1}: , {e}"
@@ -165,7 +165,7 @@ class BotAgent:
       # Store the order id
       self.order_dict["order_id_m2"] = quote_order["order"]["id"]
       self.order_dict["order_time_m2"] = datetime.now().isoformat()
-      pprint(f"self_order_dict_pairstatus in placing second order: {self.order_dict}")
+      # Debgging tool: pprint(f"self_order_dict_pairstatus in placing second order: {self.order_dict}")
     except Exception as e:
       self.order_dict["pair_status"] = "ERROR"
       self.order_dict["comments"] = f"Market 2 {self.market_2}: , {e}"

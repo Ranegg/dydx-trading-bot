@@ -74,7 +74,7 @@ class BotAgent:
     self.order_dict["pair_status"] = ""
 
     # Allow time to process
-    time.sleep(2)
+    time.sleep(5)
 
     # Check order status
     order_status = check_order_status(self.client, order_id)
@@ -195,7 +195,7 @@ class BotAgent:
         )
 
         # Ensure order is live before proceeding
-        time.sleep(2)
+        time.sleep(5)
         order_status_close_order = check_order_status(self.client, close_order["order"]["id"])
         if order_status_close_order != "FILLED":
           print("ABORT PROGRAM")

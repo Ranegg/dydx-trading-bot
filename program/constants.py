@@ -2,7 +2,7 @@ from dydx3.constants import API_HOST_GOERLI, API_HOST_MAINNET
 from decouple import config
 
 # !!!! SELECT MODE !!!!
-MODE = "DEVELOPMENT"
+MODE = "PRODUCTION"
 
 # Close all open positions and orders
 ABORT_ALL_POSITIONS = False
@@ -25,8 +25,8 @@ WINDOW = 21
 # Thresholds - Opening
 MAX_HALF_LIFE = 24
 ZSCORE_THRESH = 1.5
-USD_PER_TRADE = 25
-USD_MIN_COLLATERAL = 500
+USD_PER_TRADE = 10
+USD_MIN_COLLATERAL = 100
 STOP_LOSS_PERCENTAGE = 50
 
 # Added from to make proper order size for certain assets
@@ -63,5 +63,5 @@ HOST = API_HOST_MAINNET if MODE == "PRODUCTION" else API_HOST_GOERLI
 
 # HTTP PROVIDER
 HTTP_PROVIDER_MAINNET = "https://eth-mainnet.g.alchemy.com/v2/0cCP9EIamgYx38eO9fzNMU4EEX4HFsu1"
-HTTP_PROVIDER_TESTNET = "https://eth-goerli.g.alchemy.com/v2/iAxFB5WXUBZ1lb8i1lmClPruSA2cYtPq"
+HTTP_PROVIDER_TESTNET = "https://eth-sepolia.g.alchemy.com/v2/fI7Mbq64d0FAxI6ZILbIvN3ncORECtie"
 HTTP_PROVIDER = HTTP_PROVIDER_MAINNET if MODE == "PRODUCTION" else HTTP_PROVIDER_TESTNET

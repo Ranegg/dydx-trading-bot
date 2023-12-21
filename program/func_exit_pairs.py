@@ -101,15 +101,15 @@ def manage_trade_exits(client):
 
     # Get prices
     series_1 = get_candles_recent(client, position_market_m1)
-    time.sleep(0.2)
+    time.sleep(0.5)
     series_2 = get_candles_recent(client, position_market_m2)
-    time.sleep(0.2)
+    time.sleep(0.5)
 
     # Get markets for reference of tick size
     markets = client.public.get_markets().data
 
     # Protect API
-    time.sleep(0.2)
+    time.sleep(0.5)
 
     # Trigger close based on Z-Score
     if CLOSE_AT_ZSCORE_CROSS:
@@ -200,7 +200,7 @@ def manage_trade_exits(client):
         print(">>> Closing <<<")
 
         # Protect API
-        time.sleep(1)
+        time.sleep(2)
 
         # Close position for market 2
         print(">>> Closing market 2 <<<")

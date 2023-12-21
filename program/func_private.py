@@ -9,7 +9,7 @@ from pprint import pprint
 def is_open_positions(client, market):
 
     # Protect API
-    time.sleep(0.2)
+    time.sleep(0.5)
 
     # Get positions
     all_positions = client.private.get_positions(
@@ -115,7 +115,7 @@ def abort_all_positions(client):
             close_orders.append(order)
 
             # Protect API
-            time.sleep(0.2)
+            time.sleep(0.5)
         
         # Override json file with empty list
         bot_agents = []
